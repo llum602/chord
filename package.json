@@ -1,0 +1,19 @@
+{
+  "name": "chord",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/llum602/chord.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/llum602/chord/issues"
+  },
+  "homepage": "https://github.com/llum602/chord#readme"
+}
