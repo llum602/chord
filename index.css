@@ -5,3 +5,15 @@
 .listItem {
     margin-bottom: 20px;
 }
+hr {
+    border-color: white
+}
+.block {
+    width: 98%;
+    height: 40px;
+    color: white;
+    border: 100px solid #3b434c;
+    background: #3b434c;
+    padding: 25px;
+    margin: 15px;
+}
