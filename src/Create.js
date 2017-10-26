@@ -8,12 +8,13 @@ class App extends Component {
       <div className="Create">
         <body styles="background-color:#32516E;">
           <header className="page-header">
-            <ul align = "middle">
-            <font size = "+2"><a class = "active" styles = "color:#F0F3F4;">Home</a></font>
-            <span styles="display:inline-block; width: 200px;"></span>
-            <font size = "+2"><a styles = "color:#F0F3F4;">Create</a></font>
-            </ul>
-          </header> 
+              <ul align = "middle">
+                <h3>
+                <li><a href="app.js">Home</a></li>
+                <li><a href="create.js">Create</a></li>
+                </h3>
+              </ul>
+            </header> 
           <div className= "block"></div>
             <p align = "right"><a className = "btn btn-lg btn-primary" href = "index.html">Export</a></p>
         </body>

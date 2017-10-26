@@ -11,22 +11,11 @@ class App extends Component {
           <body styles="background-color:#32516E">
             <header className="page-header">
               <ul align = "middle">
-                <font size = "+2"><a className = "active" styles = "color:#F0F3F4;">Home</a></font>
-                <span styles="display:inline-block; width: 200px;"></span>
-                <font size = "+2"><a styles = "color:#F0F3F4;">Create</a></font>
+                <h3>
+                <li><a href="app.js">Home</a></li>
+                <li><a href="create.js">Create</a></li>
+                </h3>
               </ul>
-              {/*<img src={logo} className="App-logo" alt="logo" />
-              <h1 className="App-title">Welcome to React</h1>
-              <span styles="display:inline;">
-              <h1 align="left">
-              <font size="6"><a styles="color:#F0F3F4;">Home</a></font>
-              </h1>
-              <h1 align="right">
-              <font size="6"><a styles="color:#F0F3F4;">Create</a></font>
-              </h1>
-              <hr styles = "clear:both;"/>
-              </span>
-              */}
             </header> 
           <div className = "jumbotron">
             <h1 align = "middle">Chord</h1>
