@@ -1,4 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react'
+import Header from './Header'
+import Main from './Main'
+
+const App = () => (
+  <div>
+    <Header />
+    <Main />
+  </div>
+)
+
+export default App
+
+{/*import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -24,10 +37,7 @@ class App extends Component {
             </center>
             </h3>	
             <p align = "middle"><a className = "btn btn-lg btn-primary" href="Create.js">Create</a></p>
-          </div>
-          {/*<p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>*/}
+          </div>          
           </body>
          </div>
       </div>
@@ -36,3 +46,5 @@ class App extends Component {
 }
 
 export default App;
+
+*/}

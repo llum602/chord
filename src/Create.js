@@ -1,4 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react'
+import './App.css';
+
+const Create = () => (
+  <div className="Create">
+  <body styles="background-color:#32516E;">
+    
+    <div className= "block"></div>
+      <p align = "right"><a className = "btn btn-lg btn-primary" href = "index.html">Export</a></p>
+  </body>
+</div>
+)
+
+export default Create
+
+{/*import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -24,3 +39,4 @@ class App extends Component {
 }
 
 export default App;
+*/}
