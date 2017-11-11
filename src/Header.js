@@ -6,8 +6,8 @@ const Header = () => (
     <header className="page-header">
         <ul align = "middle">
             <h3>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/create'>Create</Link></li>
+                <li><Link to='/'>Home</Link></li>
+                <li><Link to='/create'>Create</Link></li>
             </h3>
         </ul>
     </header> 
