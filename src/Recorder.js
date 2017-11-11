@@ -8,7 +8,8 @@ class Recorder extends Component {
         this.state = {
             record: false,
             blobObject: null,
-            isRecording: false
+            isRecording: false,
+            counter: 0
         }
     }
   
@@ -22,7 +23,8 @@ class Recorder extends Component {
     stopRecording= () => {
         this.setState({
             record: false,
-            isRecording: false
+            isRecording: false,
+            counter: this.state.counter+1
         });
     }
   
@@ -36,11 +38,14 @@ class Recorder extends Component {
         });
         console.log('in savedata')
         var a = document.createElement("a");
-        document.body.appendChild(a);
+        var stopbutton = document.getElementById('stopButton');
+        a.className = 'downloadButton'
+        stopbutton.parentNode.insertBefore(a, stopbutton.nextSibling);
+        //document.getElementById('stopButton').appendChild(a);
         //a.style = "display: none";  // if not wanting download button
-        a.innerHTML = 'ASDFGHJKL'
+        a.innerHTML = `Download ${this.state.counter}`
         a.href = this.state.blobURL;
-        a.download = 'testpleasework.webm';
+        a.download = `recording${this.state.counter}.webm`;
         //a.click();  // automatically downloads
     }
   
@@ -49,8 +54,6 @@ class Recorder extends Component {
   
         return(
             <div>
-                <h1>React-Mic</h1>
-                <p><a href="https://github.com/hackingbeauty/react-mic">Documentation</a></p>
                 <ReactMic
                     className="oscilloscope"
                     record={this.state.record}
@@ -60,18 +63,23 @@ class Recorder extends Component {
                     onStop={this.onStop}
                     onStart={this.onStart}
                     strokeColor="#000000" />
+
                 <div>
+                    <p id="totalCounter">{this.state.counter} total recordings</p>
                     <audio ref="audioSource" controls="controls" src={this.state.blobURL}></audio>
                 </div>
+
                 <br />
                 <br />
                 <button
+                    id="startButton"
                     className="startStop"
                     secondary={'true'}
                     disabled={isRecording}
                     onClick={this.startRecording}>Start
                 </button>
                 <button
+                    id="stopButton"
                     className="startStop"
                     secondary={'true'}
                     disabled={!isRecording}
