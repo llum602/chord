@@ -52,7 +52,11 @@ hr {
   height: auto;
   top: 0;
   left: 0; 
-  background: #3b434c;
+  background-image: url("https://i.stack.imgur.com/xfn1X.jpg");
+}
+
+.jumbotron {
+  background-image: url("chordBannerNCleff.png");
 }
 
 ul {
