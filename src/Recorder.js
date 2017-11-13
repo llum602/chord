@@ -9,7 +9,8 @@ class Recorder extends Component {
             record: false,
             blobObject: null,
             isRecording: false,
-            counter: 0
+            counter: 0,
+            recordings: []
         }
     }
   
@@ -29,7 +30,7 @@ class Recorder extends Component {
     }
   
     onStart=() => {
-        console.log('You can tap into the onStart callback');
+        console.log('Now recording...');
     }
   
     onStop= (blobObject) => {
@@ -38,15 +39,34 @@ class Recorder extends Component {
         });
         console.log('in savedata')
         var a = document.createElement("a");
-        var stopbutton = document.getElementById('stopButton');
-        a.className = 'downloadButton'
-        stopbutton.parentNode.insertBefore(a, stopbutton.nextSibling);
-        //document.getElementById('stopButton').appendChild(a);
-        //a.style = "display: none";  // if not wanting download button
-        a.innerHTML = `Download ${this.state.counter}`
+        var audio = document.createElement("audio");
+        var buttonsDiv = document.getElementById('dl_btns');
+
+        a.className = 'btn btn-primary';
+        a.innerHTML = `Download ${this.state.counter}`;
         a.href = this.state.blobURL;
         a.download = `recording${this.state.counter}.webm`;
-        //a.click();  // automatically downloads
+        a.style = 'margin-right: 3px;'
+        buttonsDiv.appendChild(a);
+
+        audio.ref = 'audioSource';
+        audio.controls = 'controls';
+        audio.src = this.state.blobURL;
+        audio.style = 'display: block;'
+        buttonsDiv.appendChild(audio)
+
+        this.state.recordings.push(audio); // adds to array of total recordings for playback
+        console.log('recordings: ', this.state.recordings)
+
+        buttonsDiv.appendChild(document.createElement('br'));
+
+    }
+
+    playAll = () => {
+        console.log('now playing all recordings')
+        this.state.recordings.forEach(recording => {
+            recording.play();
+        });
     }
   
     render() {
@@ -57,7 +77,7 @@ class Recorder extends Component {
                 <ReactMic
                     className="oscilloscope"
                     record={this.state.record}
-                    backgroundColor="#FF4081"
+                    backgroundColor="#05f"
                     visualSetting="sinewave"
                     audioBitsPerSecond= {128000}
                     onStop={this.onStop}
@@ -66,7 +86,7 @@ class Recorder extends Component {
 
                 <div>
                     <p id="totalCounter">{this.state.counter} total recordings</p>
-                    <audio ref="audioSource" controls="controls" src={this.state.blobURL}></audio>
+                    {/* <audio ref="audioSource" controls="controls" src={this.state.blobURL}></audio> */}
                 </div>
 
                 <br />
@@ -85,6 +105,18 @@ class Recorder extends Component {
                     disabled={!isRecording}
                     onClick={this.stopRecording}>Stop
                 </button>
+                <button
+                    id="stopButton"
+                    className="startStop"
+                    secondary={'true'}
+                    disabled={isRecording}
+                    onClick={this.playAll}
+                    style={{marginLeft: 25}}>Play All
+                </button>
+                <br />
+                <div id="dl_btns">
+
+                </div>
             </div>
         );
     }
