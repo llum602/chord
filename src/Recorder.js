@@ -8,7 +8,9 @@ class Recorder extends Component {
         this.state = {
             record: false,
             blobObject: null,
-            isRecording: false
+            isRecording: false,
+            counter: 0,
+            recordings: []
         }
     }
   
@@ -22,12 +24,13 @@ class Recorder extends Component {
     stopRecording= () => {
         this.setState({
             record: false,
-            isRecording: false
+            isRecording: false,
+            counter: this.state.counter+1
         });
     }
   
     onStart=() => {
-        console.log('You can tap into the onStart callback');
+        console.log('Now recording...');
     }
   
     onStop= (blobObject) => {
@@ -36,12 +39,34 @@ class Recorder extends Component {
         });
         console.log('in savedata')
         var a = document.createElement("a");
-        document.body.appendChild(a);
-        //a.style = "display: none";  // if not wanting download button
-        a.innerHTML = 'ASDFGHJKL'
+        var audio = document.createElement("audio");
+        var buttonsDiv = document.getElementById('dl_btns');
+
+        a.className = 'btn btn-primary';
+        a.innerHTML = `Download ${this.state.counter}`;
         a.href = this.state.blobURL;
-        a.download = 'testpleasework.webm';
-        //a.click();  // automatically downloads
+        a.download = `recording${this.state.counter}.webm`;
+        a.style = 'margin-right: 3px;'
+        buttonsDiv.appendChild(a);
+
+        audio.ref = 'audioSource';
+        audio.controls = 'controls';
+        audio.src = this.state.blobURL;
+        audio.style = 'display: block;'
+        buttonsDiv.appendChild(audio)
+
+        this.state.recordings.push(audio); // adds to array of total recordings for playback
+        console.log('recordings: ', this.state.recordings)
+
+        buttonsDiv.appendChild(document.createElement('br'));
+
+    }
+
+    playAll = () => {
+        console.log('now playing all recordings')
+        this.state.recordings.forEach(recording => {
+            recording.play();
+        });
     }
   
     render() {
@@ -49,38 +74,60 @@ class Recorder extends Component {
   
         return(
             <div>
+<<<<<<< HEAD
                 {/*<h1>React-Mic</h1>*/}
                 <p><a href="https://github.com/hackingbeauty/react-mic">Documentation</a></p>
                 <div align = "left">
                 
+=======
+>>>>>>> 9eb50671bb107276d82d2b0f8314d1e2cb1eed44
                 <ReactMic
                     className="oscilloscope"
                     record={this.state.record}
-                    backgroundColor="#FF4081"
+                    backgroundColor="#05f"
                     visualSetting="sinewave"
                     audioBitsPerSecond= {128000}
                     onStop={this.onStop}
                     onStart={this.onStart}
                     strokeColor="#000000" />
 
+<<<<<<< HEAD
                 </div>
+=======
+>>>>>>> 9eb50671bb107276d82d2b0f8314d1e2cb1eed44
                 <div>
-                    <audio ref="audioSource" controls="controls" src={this.state.blobURL}></audio>
+                    <p id="totalCounter">{this.state.counter} total recordings</p>
+                    {/* <audio ref="audioSource" controls="controls" src={this.state.blobURL}></audio> */}
                 </div>
+
                 <br />
                 <br />
                 <button
+                    id="startButton"
                     className="startStop"
                     secondary={'true'}
                     disabled={isRecording}
                     onClick={this.startRecording}>Start
                 </button>
                 <button
+                    id="stopButton"
                     className="startStop"
                     secondary={'true'}
                     disabled={!isRecording}
                     onClick={this.stopRecording}>Stop
                 </button>
+                <button
+                    id="stopButton"
+                    className="startStop"
+                    secondary={'true'}
+                    disabled={isRecording}
+                    onClick={this.playAll}
+                    style={{marginLeft: 25}}>Play All
+                </button>
+                <br />
+                <div id="dl_btns">
+
+                </div>
             </div>
         );
     }
