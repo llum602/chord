@@ -44,8 +44,8 @@ class Recorder extends Component {
 
         //new
         var b = document.createElement("b");
-        var audioFinal = document.createElement("audioFinal");
-        var buttonsDivFinal = document.getElementById('dl_btns_final');
+        //var audioFinal = document.createElement("audioFinal");
+        //var buttonsDivFinal = document.getElementById('dl_btns_final');
         
 
         var audio = document.createElement("audio");
@@ -62,15 +62,16 @@ class Recorder extends Component {
         b.className = 'btn btn-primary';
         b.innerHTML = `Add`;
         b.href = this.state.blobUrl;
+        //b.onclick = console.log("added");
         //b.href = this.state.blobURL.recordingsFinal.push(audioFinal);
         b.style = 'margin-left: 3px;'
         buttonsDiv.appendChild(b);
         
-        audioFinal.ref = 'audioSource';
+        /**audioFinal.ref = 'audioSource';
         audioFinal.controls = 'controls';
         audioFinal.src = this.state.blobURL;
         audioFinal.style = 'display: block;'
-        buttonsDivFinal.appendChild(audioFinal)
+        buttonsDivFinal.appendChild(audioFinal)*/
 
 
         audio.ref = 'audioSource';
@@ -120,7 +121,7 @@ class Recorder extends Component {
                         secondary={'true'}
                         disabled={isRecording}
                         onClick={this.startRecording}> 
-                        <span class="glyphicon glyphicon-record"></span> Record
+                        <span className="glyphicon glyphicon-record"></span> Record
                     </button>
                     <button
                         id="stopButton"
@@ -128,7 +129,7 @@ class Recorder extends Component {
                         secondary={'true'}
                         disabled={!isRecording}
                         onClick={this.stopRecording}>
-                        <span class="glyphicon glyphicon-stop"></span> Stop
+                        <span className="glyphicon glyphicon-stop"></span> Stop
                     </button>
                 </div>
                 <br />
@@ -139,23 +140,26 @@ class Recorder extends Component {
                     secondary={'true'}
                     disabled={isRecording}
                     onClick={this.playAll}
-                    style={{marginLeft: 15}}>
-                    <span class="glyphicon glyphicon-play-circle"></span> Play All
+                    style={{marginleft: 15}}>
+                    <span className="glyphicon glyphicon-play-circle"></span> Play All
                 </button>
 
                 <br />
-                <div className="recordBlock" align="left">
-                    <h3>Recordings</h3>
-                    <div id="dl_btns">
-                    </div>
-                </div>
-                <div marginLeft="50px">
-                    <p id="totalCounter">{this.state.counter} total recordings</p>
-                </div>
 
-                <div className="recordFinalBlock" align="left">
-                    <h3>Track</h3>
-                    <div id="dl_btns_final">
+                <div id="block_container">
+                    <div className="recordBlock" align="left">
+                        <h3>Recordings</h3>
+                        <div id="dl_btns">
+                        </div>
+                    </div>
+                    <div marginleft="50px">
+                        <p id="totalCounter" style={{marginLeft:15}}>{this.state.counter} total recordings</p>
+                    </div>
+
+                    <div className="recordFinalBlock" align="left">
+                        <h3>Track</h3>
+                        <div id="dl_btns_final">
+                        </div>
                     </div>
                 </div>
             </div>
