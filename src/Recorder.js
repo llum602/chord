@@ -39,6 +39,11 @@ class Recorder extends Component {
         });
         console.log('in savedata')
         var a = document.createElement("a");
+
+        //new
+        var b = document.createElement("a");
+        var audioFinal = document.createElement("audioFinal");
+
         var audio = document.createElement("audio");
         var buttonsDiv = document.getElementById('dl_btns');
 
@@ -46,8 +51,22 @@ class Recorder extends Component {
         a.innerHTML = `Download ${this.state.counter}`;
         a.href = this.state.blobURL;
         a.download = `recording${this.state.counter}.webm`;
-        a.style = 'margin-right: 3px;'
+        a.style = 'margin-left: 3px;'
         buttonsDiv.appendChild(a);
+        //new
+        b.className = 'btn btn-primary';
+        b.innerHTML = `add`;
+        //b.href = this.state.blobURL;
+
+        b.style = 'margin-left: 3px;'
+        buttonsDiv.appendChild(b);
+        
+        audioFinal.ref = 'audioSource';
+        audioFinal.controls = 'controls';
+        audioFinal.src = this.state.blobURL;
+        audioFinal.style = 'display: block;'
+        buttonsDiv.appendChild(audioFinal)
+
 
         audio.ref = 'audioSource';
         audio.controls = 'controls';
@@ -74,59 +93,57 @@ class Recorder extends Component {
   
         return(
             <div>
-<<<<<<< HEAD
-                {/*<h1>React-Mic</h1>*/}
-                <p><a href="https://github.com/hackingbeauty/react-mic">Documentation</a></p>
-                <div align = "left">
-                
-=======
->>>>>>> 9eb50671bb107276d82d2b0f8314d1e2cb1eed44
-                <ReactMic
-                    className="oscilloscope"
-                    record={this.state.record}
-                    backgroundColor="#05f"
-                    visualSetting="sinewave"
-                    audioBitsPerSecond= {128000}
-                    onStop={this.onStop}
-                    onStart={this.onStart}
-                    strokeColor="#000000" />
+                <div align="center">
+                    <ReactMic
+                        className="oscilloscope"
+                        record={this.state.record}
+                        backgroundColor="#05f"
+                        visualSetting="sinewave"
+                        audioBitsPerSecond= {128000}
+                        onStop={this.onStop}
+                        onStart={this.onStart}
+                        strokeColor="#000000" />
+                    
 
-<<<<<<< HEAD
+                    <div>
+                        <p id="totalCounter">{this.state.counter} total recordings</p>
+                        {/* <audio ref="audioSource" controls="controls" src={this.state.blobURL}></audio> */}
+                    </div>
+                    <br />
+                    <button
+                        id="startButton"
+                        className="startButton"
+                        secondary={'true'}
+                        disabled={isRecording}
+                        onClick={this.startRecording}>Start
+                    </button>
+                    <button
+                        id="stopButton"
+                        className="stopButton"
+                        secondary={'true'}
+                        disabled={!isRecording}
+                        onClick={this.stopRecording}>Stop
+                    </button>
                 </div>
-=======
->>>>>>> 9eb50671bb107276d82d2b0f8314d1e2cb1eed44
-                <div>
-                    <p id="totalCounter">{this.state.counter} total recordings</p>
-                    {/* <audio ref="audioSource" controls="controls" src={this.state.blobURL}></audio> */}
-                </div>
+                <br />
 
-                <br />
-                <br />
-                <button
-                    id="startButton"
-                    className="startStop"
-                    secondary={'true'}
-                    disabled={isRecording}
-                    onClick={this.startRecording}>Start
-                </button>
-                <button
+                <button 
                     id="stopButton"
-                    className="startStop"
-                    secondary={'true'}
-                    disabled={!isRecording}
-                    onClick={this.stopRecording}>Stop
-                </button>
-                <button
-                    id="stopButton"
-                    className="startStop"
+                    className="playAllRec"
                     secondary={'true'}
                     disabled={isRecording}
                     onClick={this.playAll}
                     style={{marginLeft: 25}}>Play All
                 </button>
-                <br />
-                <div id="dl_btns">
 
+                <br />
+                <div className="recordBlock" align="left">
+                    <h3>Recordings</h3>
+                    <div id="dl_btns">
+                    </div>
+                </div>
+                <div marginLeft="50px">
+                    <p id="totalCounter">{this.state.counter} total recordings</p>
                 </div>
             </div>
         );

@@ -41,8 +41,8 @@ hr {
     width: 98%;
     height: 50%;
     color: white;
-    border: 100px #3b434c;
-    background: #3b434c;
+    border: 100px #46515e;
+    background: #46515e;
     padding: 25px;
     margin: 15px;
 }
@@ -70,6 +70,23 @@ li {
   padding-inline-start:100px;
   padding-inline-end: 100px;
 }
-.startStop {
-  background-color: black;
+.stopButton {
+  background-color: rgb(117, 44, 44);
+}
+.startButton {
+  background-color: rgb(52, 100, 56);
+}
+.playAllRec {
+  background-color: rgb(52, 136, 175);
+}
+
+.recordBlock {
+  align-content: "left";
+  width: 50%;
+  height: 50%;
+  color: white;
+  border: 100px #4a6d94;
+  background: #4a6d94;
+  padding: 10px;
+  margin: 15px;
 }
