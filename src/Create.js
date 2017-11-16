@@ -5,8 +5,7 @@ import Recorder from './Recorder'
 const Create = () => (
   <div className="Create">
     {/* <body styles="background-color:#32516E;"> */}
-
-      <div className= "block">
+      <div className= "block" align="left">
         <Recorder />
       </div>
       <br /><br /><br />

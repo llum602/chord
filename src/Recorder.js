@@ -49,8 +49,10 @@ class Recorder extends Component {
   
         return(
             <div>
-                <h1>React-Mic</h1>
+                {/*<h1>React-Mic</h1>*/}
                 <p><a href="https://github.com/hackingbeauty/react-mic">Documentation</a></p>
+                <div align = "left">
+                
                 <ReactMic
                     className="oscilloscope"
                     record={this.state.record}
@@ -60,6 +62,8 @@ class Recorder extends Component {
                     onStop={this.onStop}
                     onStart={this.onStart}
                     strokeColor="#000000" />
+
+                </div>
                 <div>
                     <audio ref="audioSource" controls="controls" src={this.state.blobURL}></audio>
                 </div>
