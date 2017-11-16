@@ -10,7 +10,9 @@ class Recorder extends Component {
             blobObject: null,
             isRecording: false,
             counter: 0,
-            recordings: []
+            recordings: [],
+
+            recordingsFinal: []
         }
     }
   
@@ -41,11 +43,14 @@ class Recorder extends Component {
         var a = document.createElement("a");
 
         //new
-        var b = document.createElement("a");
+        var b = document.createElement("b");
         var audioFinal = document.createElement("audioFinal");
+        var buttonsDivFinal = document.getElementById('dl_btns_final');
+        
 
         var audio = document.createElement("audio");
         var buttonsDiv = document.getElementById('dl_btns');
+        
 
         a.className = 'btn btn-primary';
         a.innerHTML = `Download ${this.state.counter}`;
@@ -56,8 +61,8 @@ class Recorder extends Component {
         //new
         b.className = 'btn btn-primary';
         b.innerHTML = `add`;
-        //b.href = this.state.blobURL;
-
+        b.href = this.state.blobUrl;
+        //b.href = this.state.blobURL.recordingsFinal.push(audioFinal);
         b.style = 'margin-left: 3px;'
         buttonsDiv.appendChild(b);
         
@@ -65,7 +70,7 @@ class Recorder extends Component {
         audioFinal.controls = 'controls';
         audioFinal.src = this.state.blobURL;
         audioFinal.style = 'display: block;'
-        buttonsDiv.appendChild(audioFinal)
+        buttonsDivFinal.appendChild(audioFinal)
 
 
         audio.ref = 'audioSource';
@@ -144,6 +149,12 @@ class Recorder extends Component {
                 </div>
                 <div marginLeft="50px">
                     <p id="totalCounter">{this.state.counter} total recordings</p>
+                </div>
+
+                <div className="recordFinalBlock" align="left">
+                    <h3>Track</h3>
+                    <div id="dl_btns_final">
+                    </div>
                 </div>
             </div>
         );

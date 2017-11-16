@@ -90,3 +90,15 @@ li {
   padding: 10px;
   margin: 15px;
 }
+
+.recordFinalBlock {
+  align-content: "left";
+  align-self: "right";
+  width: 50%;
+  height: 50%;
+  color: white;
+  border: 100px #4a948e;
+  background: #4a948e;
+  padding: 10px;
+  margin: 15px;
+}
