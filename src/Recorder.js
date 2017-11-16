@@ -53,14 +53,14 @@ class Recorder extends Component {
         
 
         a.className = 'btn btn-primary';
-        a.innerHTML = `Download ${this.state.counter}`;
+        a.innerHTML = 'Download';
         a.href = this.state.blobURL;
         a.download = `recording${this.state.counter}.webm`;
         a.style = 'margin-left: 3px;'
         buttonsDiv.appendChild(a);
         //new
         b.className = 'btn btn-primary';
-        b.innerHTML = `add`;
+        b.innerHTML = `Add`;
         b.href = this.state.blobUrl;
         //b.href = this.state.blobURL.recordingsFinal.push(audioFinal);
         b.style = 'margin-left: 3px;'
@@ -111,34 +111,36 @@ class Recorder extends Component {
                     
 
                     <div>
-                        <p id="totalCounter">{this.state.counter} total recordings</p>
                         {/* <audio ref="audioSource" controls="controls" src={this.state.blobURL}></audio> */}
                     </div>
                     <br />
                     <button
                         id="startButton"
-                        className="startButton"
+                        className="btn btn-danger btn-lg"
                         secondary={'true'}
                         disabled={isRecording}
-                        onClick={this.startRecording}>Start
+                        onClick={this.startRecording}> 
+                        <span class="glyphicon glyphicon-record"></span> Record
                     </button>
                     <button
                         id="stopButton"
-                        className="stopButton"
+                        className="btn btn-inverse btn-lg"
                         secondary={'true'}
                         disabled={!isRecording}
-                        onClick={this.stopRecording}>Stop
+                        onClick={this.stopRecording}>
+                        <span class="glyphicon glyphicon-stop"></span> Stop
                     </button>
                 </div>
                 <br />
 
                 <button 
                     id="stopButton"
-                    className="playAllRec"
+                    className="btn btn-success btn-lg"
                     secondary={'true'}
                     disabled={isRecording}
                     onClick={this.playAll}
-                    style={{marginLeft: 25}}>Play All
+                    style={{marginLeft: 15}}>
+                    <span class="glyphicon glyphicon-play-circle"></span> Play All
                 </button>
 
                 <br />
