@@ -52,7 +52,7 @@ hr {
   height: auto;
   top: 0;
   left: 0; 
-  background-image: url("https://i.stack.imgur.com/xfn1X.jpg");
+  background-color: white;
 }
 
 .jumbotron {
@@ -89,10 +89,10 @@ li {
   background: #4a6d94;
   padding: 10px;
   margin: 15px;
+  display:inline-block;
 }
 
 .recordFinalBlock {
-  align-content: "left";
   align-self: "right";
   width: 50%;
   height: 50%;
@@ -101,6 +101,8 @@ li {
   background: #4a948e;
   padding: 10px;
   margin: 15px;
+  display:inline-block;
+  
 }
 
 button {
@@ -108,15 +110,31 @@ button {
   margin-right: 5px;
 }
 
-.showInline {
-  
+.block_container
+{
+    align-content: center;
+
+    display:inline;
 }
 
-#block_container
-{
-    text-align:left;
+#first {
+  width: 40%;
+  height: 50%;
+  padding: 10px;
+  margin: 15px;
+  float: left;
+  background-color: #4a6d94;  
 }
-#bloc1, #bloc2
-{
-    display:inline;
+
+#second {
+  width: 40%;
+  height: 50%;
+  padding: 10px;
+  margin: 15px;
+  float: right;
+  background-color: #4a948e;  
+}
+
+#clear {
+  clear: both;
 }

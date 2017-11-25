@@ -45,8 +45,7 @@ class Recorder extends Component {
         //new
         var b = document.createElement("b");
         //var audioFinal = document.createElement("audioFinal");
-        //var buttonsDivFinal = document.getElementById('dl_btns_final');
-        
+        //var buttonsDivFinal = document.getElementById('dl_btns_final');     
 
         var audio = document.createElement("audio");
         var buttonsDiv = document.getElementById('dl_btns');
@@ -96,21 +95,19 @@ class Recorder extends Component {
   
     render() {
         const { isRecording } = this.state;
-  
         return(
             <div>
                 <div align="center">
                     <ReactMic
                         className="oscilloscope"
                         record={this.state.record}
-                        backgroundColor="#05f"
+                        backgroundColor="#46515e"
                         visualSetting="sinewave"
                         audioBitsPerSecond= {128000}
                         onStop={this.onStop}
                         onStart={this.onStart}
-                        strokeColor="#000000" />
+                        strokeColor="#ffffff" />
                     
-
                     <div>
                         {/* <audio ref="audioSource" controls="controls" src={this.state.blobURL}></audio> */}
                     </div>
@@ -125,7 +122,7 @@ class Recorder extends Component {
                     </button>
                     <button
                         id="stopButton"
-                        className="btn btn-inverse btn-lg"
+                        className="btn btn-info btn-lg"
                         secondary={'true'}
                         disabled={!isRecording}
                         onClick={this.stopRecording}>
@@ -146,20 +143,18 @@ class Recorder extends Component {
 
                 <br />
 
-                <div id="block_container">
-                    <div className="recordBlock" align="left">
+                <div className="block_container">
+                    <div id="first">
                         <h3>Recordings</h3>
-                        <div id="dl_btns">
-                        </div>
+                        <div id="dl_btns"></div>
                     </div>
+                    <div id="second">
+                        <h3>Track</h3>
+                        <div id="dl_btns_final"></div>
+                    </div>
+                    <div id="clear"></div>
                     <div marginleft="50px">
                         <p id="totalCounter" style={{marginLeft:15}}>{this.state.counter} total recordings</p>
-                    </div>
-
-                    <div className="recordFinalBlock" align="left">
-                        <h3>Track</h3>
-                        <div id="dl_btns_final">
-                        </div>
                     </div>
                 </div>
             </div>
