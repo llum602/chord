@@ -57,21 +57,14 @@ class Recorder extends Component {
         a.download = `recording${this.state.counter}.webm`;
         a.style = 'margin-left: 3px;'
         buttonsDiv.appendChild(a);
-        //new
+
         b.className = 'btn btn-primary';
         b.innerHTML = `Add`;
-        b.href = this.state.blobUrl;
-        //b.onclick = console.log("added");
+        b.href = this.state.blobObject;
+        b.onclick = this.addClick;
         //b.href = this.state.blobURL.recordingsFinal.push(audioFinal);
         b.style = 'margin-left: 3px;'
         buttonsDiv.appendChild(b);
-        
-        /**audioFinal.ref = 'audioSource';
-        audioFinal.controls = 'controls';
-        audioFinal.src = this.state.blobURL;
-        audioFinal.style = 'display: block;'
-        buttonsDivFinal.appendChild(audioFinal)*/
-
 
         audio.ref = 'audioSource';
         audio.controls = 'controls';
@@ -86,9 +79,40 @@ class Recorder extends Component {
 
     }
 
+    addClick = (blobObject) => {
+
+        console.log("added"); 
+        var audioFinal = document.createElement("audioFinal");  
+        var buttonsDivFinal = document.getElementById('dl_btns_final');
+        var trackNum = document.createElement("trackNum");
+
+        audioFinal.ref = 'audioSource';
+        audioFinal.controls = 'controls';
+        //???
+        audioFinal.src = this.state.blobObject;
+        //
+        audioFinal.style = 'display: block;'
+        buttonsDivFinal.appendChild(audioFinal)
+        
+        //testing
+        trackNum.className = 'btn btn-primary';
+        trackNum.innerHTML = this.state.counter;
+        buttonsDivFinal.appendChild(trackNum);
+
+        this.state.recordingsFinal.push(audioFinal);
+        console.log("recordings;", this.state.recordingsFinal);
+    }
+
     playAll = () => {
         console.log('now playing all recordings')
         this.state.recordings.forEach(recording => {
+            recording.play();
+        });
+    }
+
+    playTrack = () => {
+        console.log('Playing track')
+        this.state.recordingsFinal.forEach(recording => {
             recording.play();
         });
     }
@@ -140,7 +164,17 @@ class Recorder extends Component {
                     style={{marginleft: 15}}>
                     <span className="glyphicon glyphicon-play-circle"></span> Play All
                 </button>
+                <br />
 
+                <button 
+                    id="stopButton"
+                    className="btn btn-info btn-lg"
+                    secondary={'true'}
+                    disabled={isRecording}
+                    onClick={this.playTrack}
+                    style={{marginleft: 15}}>
+                    <span className="glyphicon glyphicon-play-circle"></span> Play Track
+                </button>
                 <br />
 
                 <div className="block_container">
