@@ -75,29 +75,33 @@ class Recorder extends Component {
 
     }
 
-    addClick = (blobObjectFinal) => {
-        this.setState({
-            blobURL : blobObjectFinal.blobURL
-        });
+    addClick = (clickEvent) => {
+        console.log(clickEvent)
+        console.log(clickEvent.srcElement.nextSibling.src)//.firstElementChild.nextElementSibling.nextElementSibling.currentSrc)
+        /* this.setState({
+            blobURL : clickEvent.blobURL
+        }); */
         console.log("added"); 
-        addCounter : this.state.addCounter+1
-        var audioFinal = document.createElement("audioFinal");  
+        //addCounter : this.state.addCounter+1
+        var audioFinal = document.createElement("audio");  
         var buttonsDivFinal = document.getElementById('dl_btns_final');
         var trackNum = document.createElement("trackNum");
+
+        //trackNum.className = 'btn btn-primary';
+        //trackNum.style = 'padding-top: 50px';
+        trackNum.innerHTML = "Track " + (this.state.recordingsFinal.length+1);
+        buttonsDivFinal.appendChild(trackNum);
 
         audioFinal.ref = 'audioSource';
         audioFinal.controls = 'controls';
         //???
-        audioFinal.src = this.state.blobURL;
+        audioFinal.src = clickEvent.srcElement.nextSibling.src;
         //
-        audioFinal.style = 'display: block;'
+        audioFinal.style = 'display: block; margin-bottom: 15px;'
         buttonsDivFinal.appendChild(audioFinal)
+        console.log(audioFinal)
         
-        //testing
-        trackNum.className = 'btn btn-primary';
-        trackNum.style = 'margin-top: 5px';
-        trackNum.innerHTML = "Track " + (this.state.recordingsFinal.length+1);
-        buttonsDivFinal.appendChild(trackNum);
+
 
         this.state.recordingsFinal.push(audioFinal);
         console.log("recordings;", this.state.recordingsFinal);
