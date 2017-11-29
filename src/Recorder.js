@@ -12,7 +12,8 @@ class Recorder extends Component {
             counter: 0,
             recordings: [],
 
-            recordingsFinal: []
+            recordingsFinal: [],
+            addCounter: 0
         }
     }
   
@@ -42,15 +43,10 @@ class Recorder extends Component {
         console.log('in savedata')
         var a = document.createElement("a");
 
-        //new
         var b = document.createElement("b");
-        //var audioFinal = document.createElement("audioFinal");
-        //var buttonsDivFinal = document.getElementById('dl_btns_final');     
-
         var audio = document.createElement("audio");
         var buttonsDiv = document.getElementById('dl_btns');
-        
-
+    
         a.className = 'btn btn-primary';
         a.innerHTML = 'Download';
         a.href = this.state.blobURL;
@@ -82,6 +78,7 @@ class Recorder extends Component {
     addClick = (blobObject) => {
 
         console.log("added"); 
+        addCounter : this.state.addCounter+1
         var audioFinal = document.createElement("audioFinal");  
         var buttonsDivFinal = document.getElementById('dl_btns_final');
         var trackNum = document.createElement("trackNum");
@@ -96,7 +93,8 @@ class Recorder extends Component {
         
         //testing
         trackNum.className = 'btn btn-primary';
-        trackNum.innerHTML = this.state.counter;
+        trackNum.style = 'margin-top: 5px';
+        trackNum.innerHTML = "Track " + (this.state.recordingsFinal.length+1);
         buttonsDivFinal.appendChild(trackNum);
 
         this.state.recordingsFinal.push(audioFinal);
@@ -146,7 +144,7 @@ class Recorder extends Component {
                     </button>
                     <button
                         id="stopButton"
-                        className="btn btn-info btn-lg"
+                        className="btn btn-default btn-lg"
                         secondary={'true'}
                         disabled={!isRecording}
                         onClick={this.stopRecording}>
@@ -155,27 +153,31 @@ class Recorder extends Component {
                 </div>
                 <br />
 
-                <button 
-                    id="stopButton"
-                    className="btn btn-success btn-lg"
-                    secondary={'true'}
-                    disabled={isRecording}
-                    onClick={this.playAll}
-                    style={{marginleft: 15}}>
-                    <span className="glyphicon glyphicon-play-circle"></span> Play All
-                </button>
-                <br />
-
-                <button 
-                    id="stopButton"
-                    className="btn btn-info btn-lg"
-                    secondary={'true'}
-                    disabled={isRecording}
-                    onClick={this.playTrack}
-                    style={{marginleft: 15}}>
-                    <span className="glyphicon glyphicon-play-circle"></span> Play Track
-                </button>
-                <br />
+                <div align="left">
+                    <div id="bLeft">
+                        <button 
+                            id="stopButton"
+                            className="btn btn-info btn-sm"
+                            secondary={'true'}
+                            disabled={isRecording}
+                            onClick={this.playAll}
+                            style={{marginleft: 15}}>
+                            <span className="glyphicon glyphicon-play-circle"></span> Play All
+                        </button>
+                    </div>
+                    <div id="bRight">
+                        <button 
+                            id="stopButton"
+                            className="btn btn-info btn-sm"
+                            secondary={'true'}
+                            disabled={isRecording}
+                            onClick={this.playTrack}
+                            style={{marginleft: 15}}>
+                            <span className="glyphicon glyphicon-play-circle"></span> Play Tracks
+                        </button>
+                    </div>
+                    <div id="clear"></div>
+                </div>
 
                 <div className="block_container">
                     <div id="first">
@@ -183,7 +185,7 @@ class Recorder extends Component {
                         <div id="dl_btns"></div>
                     </div>
                     <div id="second">
-                        <h3>Track</h3>
+                        <h3>Tracks</h3>
                         <div id="dl_btns_final"></div>
                     </div>
                     <div id="clear"></div>

@@ -138,3 +138,11 @@ button {
 #clear {
   clear: both;
 }
+
+#bLeft {
+  float:left;
+}
+
+#bRight {
+  float:right;
+}
