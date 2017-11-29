@@ -13,7 +13,8 @@ class Recorder extends Component {
             recordings: [],
 
             recordingsFinal: [],
-            addCounter: 0
+            addCounter: 0,
+            blobObjectFinal: null
         }
     }
   
@@ -58,7 +59,6 @@ class Recorder extends Component {
         b.innerHTML = `Add`;
         b.href = this.state.blobObject;
         b.onclick = this.addClick;
-        //b.href = this.state.blobURL.recordingsFinal.push(audioFinal);
         b.style = 'margin-left: 3px;'
         buttonsDiv.appendChild(b);
 
@@ -75,8 +75,10 @@ class Recorder extends Component {
 
     }
 
-    addClick = (blobObject) => {
-
+    addClick = (blobObjectFinal) => {
+        this.setState({
+            blobURL : blobObjectFinal.blobURL
+        });
         console.log("added"); 
         addCounter : this.state.addCounter+1
         var audioFinal = document.createElement("audioFinal");  
@@ -86,7 +88,7 @@ class Recorder extends Component {
         audioFinal.ref = 'audioSource';
         audioFinal.controls = 'controls';
         //???
-        audioFinal.src = this.state.blobObject;
+        audioFinal.src = this.state.blobURL;
         //
         audioFinal.style = 'display: block;'
         buttonsDivFinal.appendChild(audioFinal)
