@@ -41,8 +41,8 @@ hr {
     width: 98%;
     height: 50%;
     color: white;
-    border: 100px #46515e;
-    background: #46515e;
+    border-image: url("blockBG.png");
+    background-image: url("blockBG.png");
     padding: 25px;
     margin: 15px;
 }
@@ -68,7 +68,7 @@ ul {
 li {
   display:inline;
   padding-inline-start:100px;
-  padding-inline-end: 100px;
+  padding-inline-end: 50px;
 }
 .stopButton {
   background-color: rgb(117, 44, 44);
@@ -113,7 +113,6 @@ button {
 .block_container
 {
     align-content: center;
-
     display:inline;
 }
 
@@ -145,4 +144,13 @@ button {
 
 #bRight {
   float:right;
+}
+
+.logo {
+  height:60px;
+  width:60px;
+}
+
+.h4 {
+  font-size: 10px;
 }
