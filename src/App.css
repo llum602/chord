@@ -52,7 +52,6 @@ hr {
   height: auto;
   top: 0;
   left: 0; 
-  background-color: white;
 }
 
 .jumbotron {
@@ -149,6 +148,31 @@ button {
 .logo {
   height:60px;
   width:60px;
+}
+
+.graphic {
+  height:400px;
+  width:400px;
+}
+
+.gContainer {
+  padding: 50px;
+}
+
+.graphicBlock {
+  width: 50%;
+  height: 350px;
+  color: white;
+  border: 100px #ffffff;
+  background: #ffffff;
+}
+
+.gp {
+  vertical-align: middle;
+  text-align: center;
+  font-size: 20px;
+  padding: 150px;
+  color: #333333;
 }
 
 .h4 {

@@ -43,7 +43,6 @@ class Recorder extends Component {
         });
         console.log('in savedata')
         var a = document.createElement("a");
-
         var b = document.createElement("b");
         var audio = document.createElement("audio");
         var buttonsDiv = document.getElementById('dl_btns');
@@ -78,33 +77,68 @@ class Recorder extends Component {
     addClick = (clickEvent) => {
         console.log(clickEvent)
         console.log(clickEvent.srcElement.nextSibling.src)//.firstElementChild.nextElementSibling.nextElementSibling.currentSrc)
-        /* this.setState({
-            blobURL : clickEvent.blobURL
-        }); */
         console.log("added"); 
         //addCounter : this.state.addCounter+1
         var audioFinal = document.createElement("audio");  
         var buttonsDivFinal = document.getElementById('dl_btns_final');
         var trackNum = document.createElement("trackNum");
 
+        var c = document.createElement("c");
+        var ifDeleted = false;
+
         //trackNum.className = 'btn btn-primary';
         //trackNum.style = 'padding-top: 50px';
-        trackNum.innerHTML = "Track " + (this.state.recordingsFinal.length+1);
+        trackNum.innerHTML = "Track " + (this.state.recordingsFinal.length+1) + " ";
         buttonsDivFinal.appendChild(trackNum);
 
+        c.className = 'btn btn-danger btn-sm';
+        c.innerHTML = 'Delete'; 
+        c.style = 'margin-left: 3px;'
+        buttonsDivFinal.appendChild(c);
+        ifDeleted = this.deleteTrack; 
+            c.onclick = function(){
+                console.log("Deletingg"); 
+                buttonsDivFinal.removeChild(audioFinal); 
+                buttonsDivFinal.removeChild(trackNum); 
+                buttonsDivFinal.removeChild(c); 
+                ifDeleted();
+                console.log(ifDeleted);
+            }
+        
+        /**
+        c.onclick = function(){
+            console.log("Deletingg"); 
+            //console.log("TN" + this.state.recordingsFinal.length-1);
+            //this.state.recordingsFinal.splice(0,1);
+            c.deleteTrack;
+            buttonsDivFinal.removeChild(audioFinal); 
+            buttonsDivFinal.removeChild(trackNum); 
+            buttonsDivFinal.removeChild(c); 
+        } */
+        
         audioFinal.ref = 'audioSource';
         audioFinal.controls = 'controls';
-        //???
         audioFinal.src = clickEvent.srcElement.nextSibling.src;
-        //
         audioFinal.style = 'display: block; margin-bottom: 15px;'
         buttonsDivFinal.appendChild(audioFinal)
         console.log(audioFinal)
-        
-
 
         this.state.recordingsFinal.push(audioFinal);
         console.log("recordings;", this.state.recordingsFinal);
+        
+    }
+
+    deleteControls(x, y, z, p) {
+        x.removeChild(z);
+        x.removeChild(p); 
+        x.removeChild(y);
+    }
+
+    deleteTrack = () => {
+        console.log("Deleting track");
+        this.state.recordingsFinal.splice(this.state.recordingsFinal.length-1,1);
+        console.log("recordings new;", this.state.recordingsFinal);
+        return true;
     }
 
     playAll = () => {
