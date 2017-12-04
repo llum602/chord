@@ -163,9 +163,10 @@ class Recorder extends Component {
                     <ReactMic
                         className="oscilloscope"
                         record={this.state.record}
-                        backgroundColor="#46515e"
+                        backgroundColor= "#4d689b"
                         visualSetting="sinewave"
-                        audioBitsPerSecond= {128000}
+                        //128000
+                        audioBitsPerSecond= {512}
                         onStop={this.onStop}
                         onStart={this.onStart}
                         strokeColor="#ffffff" />

@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css';
-import micLogo from'./chordRecording.png';
+import micLogo from'./chordRecording2.png';
 import trackLogo from'./chordTracks.png';
 import listenLogo from'./chordListen.png';
 import { Link } from 'react-router-dom'
